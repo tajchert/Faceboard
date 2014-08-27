@@ -22,6 +22,7 @@ import org.opencv.objdetect.CascadeClassifier;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -60,6 +61,7 @@ public class FdActivity extends Activity implements CvCameraViewListener2 {
     
     //For brightness settings
     private float                  mBrightness;
+    
 	static {
 		if (!OpenCVLoader.initDebug()) {
 			// Handle initialization error
@@ -137,6 +139,11 @@ public class FdActivity extends Activity implements CvCameraViewListener2 {
         mOpenCvCameraView.setCvCameraViewListener(this);
         mTextViewFaceTextRight = (TextView) findViewById(R.id.textViewFacesRight);
         mTextViewRandomNumbers = (TextView) findViewById(R.id.textViewRandomNumbers);
+        
+        Typeface typeface_terminator = Typeface.createFromAsset(getAssets(), "fonts/terminator_real_nfi.ttf");
+        mTextViewFaceTextRight.setTypeface(typeface_terminator);
+        mTextViewRandomNumbers.setTypeface(typeface_terminator);
+        
     }
     
     final Handler facesHandler = new Handler() {
